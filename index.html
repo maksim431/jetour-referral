@@ -49,6 +49,7 @@ a{text-decoration:none}
 .sidebar .side-close{display:none}
 
 /* ---------- header ---------- */
+.topwrap{position:sticky;top:0;z-index:20;margin-top:-20px;padding-top:20px;background:linear-gradient(var(--bg) 60%,transparent 60%)}
 .topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:78px;background:var(--graphite);color:var(--white);border-radius:var(--r-card);padding:19px 24px}
 .topbar h1{font-weight:400;font-size:20px;color:rgba(247,247,247,.6)}
 .top-left{display:flex;align-items:center;gap:12px;min-width:0}
@@ -87,9 +88,6 @@ a{text-decoration:none}
 .rules:hover{background:var(--pure)}
 .rules .ico{width:28px;height:28px;border-radius:8px;background:var(--teal);display:grid;place-items:center;flex:none}
 .rules .ico svg{width:20px;height:20px}
-.linkline{display:flex;flex-direction:column;gap:6px}
-.linkline span{font-size:14px;color:var(--muted)}
-.linkfield{font-size:14px;font-weight:500;padding:12px 14px;border-radius:12px;background:var(--pure);border:1px solid var(--line);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;user-select:all}
 .btns{display:flex;flex-direction:column;gap:6px}
 .photo{position:relative;border-radius:var(--r-card);overflow:hidden;background:#c3c3c3;min-height:300px}
 .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:42% 50%}
@@ -147,6 +145,7 @@ a{text-decoration:none}
 .history-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
 .count{font-size:16px;color:rgba(10,10,10,.5);white-space:nowrap}
 .events{list-style:none;display:flex;flex-direction:column;gap:6px;padding:16px;border-radius:var(--r-panel);background:var(--soft)}
+.event .badge{justify-self:start}
 .event{display:grid;grid-template-columns:84px minmax(0,1fr) 98px;align-items:center;gap:24px;min-height:56px;padding:10px 0;border-radius:10px}
 .event .what{display:flex;flex-direction:column;gap:2px;padding-left:24px;border-left:1px solid rgba(10,10,10,.24);min-width:0}
 .event .what b{font-weight:500;font-size:16px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -200,6 +199,7 @@ a{text-decoration:none}
 }
 @media (max-width:1024px){
   .app{grid-template-columns:1fr;padding:12px 12px 0;gap:0}
+  .topwrap{margin-top:-12px;padding-top:12px}
   .sidebar{position:fixed;top:12px;left:12px;bottom:12px;height:auto;width:min(320px,calc(100vw - 24px));transform:translateX(calc(-100% - 24px));transition:transform .25s ease}
   .sidebar.open{transform:none}
   .sidebar .side-close{display:grid;position:absolute;top:12px;right:12px}
@@ -229,7 +229,6 @@ a{text-decoration:none}
   .rating-inner{width:100%;background:linear-gradient(90deg,rgba(0,0,0,.35),rgba(0,0,0,.15))}
   .row{padding:0 14px;grid-template-columns:36px minmax(0,1fr) 40px}
   .event{grid-template-columns:76px minmax(0,1fr);gap:10px 12px}
-  .event .badge{justify-self:start}
   .progress span{white-space:normal}
   .event time{grid-column:2;text-align:left;border:0;padding:0 0 0 14px;font-size:12px;color:var(--muted);margin-top:-6px}
   .event .what{padding-left:14px}
@@ -261,7 +260,7 @@ a{text-decoration:none}
   <div class="scrim" id="scrim"></div>
 
   <div class="main">
-    <header class="topbar">
+    <div class="topwrap"><header class="topbar">
       <div class="top-left">
         <button class="burger" id="burger" aria-label="Открыть меню" aria-controls="sidebar" aria-expanded="false"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M3 5h18v2H3zm0 6h18v2H3zm0 6h18v2H3z" fill="#F7F7F7"/></svg></button>
         <h1>Реферальная программа</h1>
@@ -272,7 +271,7 @@ a{text-decoration:none}
         <span class="vsep" aria-hidden="true"></span>
         <button class="icon-btn" data-soon="Выход в концепте не работает" aria-label="Выйти"><svg viewBox="0 0 24 24"><use href="#i-logout"/></svg></button>
       </div>
-    </header>
+    </header></div>
 
     <main class="content">
       <!-- 1. Реферальная ссылка -->
@@ -284,10 +283,6 @@ a{text-decoration:none}
             <div class="qr" id="qr" role="img" aria-label="QR-код с вашей реферальной ссылкой"></div>
             <div class="actions">
               <button class="rules" id="rulesBtn"><span class="ico"><svg viewBox="0 0 24 24"><use href="#i-download"/></svg></span>Скачать правила Реферальной программы</button>
-              <div class="linkline">
-                <span>Ваша ссылка</span>
-                <div class="linkfield" id="linkText"></div>
-              </div>
               <div class="btns">
                 <button class="btn" id="copyBtn"><svg viewBox="0 0 24 24"><use href="#i-copy"/></svg><span>Копировать ссылку</span></button>
                 <div class="share-menu">
@@ -417,8 +412,6 @@ a{text-decoration:none}
   function toast(msg){ toastEl.querySelector('span').textContent = msg; toastEl.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(function(){toastEl.classList.remove('show');}, 2600); }
 
   /* link + QR */
-  $('#linkText').textContent = refLink.replace(/^https?:\/\//,'');
-  $('#linkText').title = refLink;
   function drawQR(){
     var box = $('#qr');
     if (typeof window.qrcode !== 'function') { box.innerHTML = '<p class="qr-fallback">QR-код не загрузился. Скопируйте ссылку кнопкой справа.</p>'; return; }
