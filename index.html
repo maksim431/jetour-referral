@@ -77,50 +77,34 @@ a{text-decoration:none}
 .btn:hover{background:var(--teal-hover)}
 .btn:active{background:var(--teal-press);transform:translateY(1px)}
 .btn svg{width:24px;height:24px;flex:none;fill:currentColor}
-.btn.is-done{background:var(--black)}
+.btn.is-done{background:var(--black);color:var(--white)}
 .badge{display:inline-flex;align-items:center;padding:2px 6px;border-radius:22px;font-size:12px;font-weight:500;line-height:1.4;white-space:nowrap}
 .badge--dark{background:var(--black);color:var(--white)}
 
 /* ---------- referral block ---------- */
-.ref-wrap{container-type:inline-size}
-.ref{position:relative;display:flex;min-height:500px;border-radius:var(--r-card);overflow:hidden;background:#c3c3c3;isolation:isolate}
-.ref-photo{position:absolute;inset:0;z-index:-1}
-.ref-photo img{position:absolute;left:-4.64%;top:-20.8%;width:119.7%;height:160%;max-width:none;object-fit:cover;transform:scaleX(-1)}
-.ref-photo::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.18)}
-.ref-panel{width:min(672px,100%);display:flex;flex-direction:column;gap:24px;padding:32px;border-radius:var(--r-card);background:rgba(11,11,12,.49);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);color:var(--white)}
-.ref-panel .h2{color:var(--white)}
-.lead{font-size:18px;line-height:1.2;color:rgba(247,247,247,.6)}
-.share-card{display:grid;grid-template-columns:295px minmax(0,1fr);gap:32px;align-items:end;margin-top:auto}
-.qr-plate{width:295px;padding:8px;border-radius:10px;background:#f7f7f7}
-.qr{width:100%;aspect-ratio:1;display:grid;place-items:center;position:relative}
+.ref{display:grid;grid-template-columns:772fr 563fr;gap:99px;align-items:stretch}
+.ref-main{display:flex;flex-direction:column;gap:24px;min-width:0}
+.share-card{flex:1;display:grid;grid-template-columns:minmax(0,1fr) 289px;gap:24px;padding:16px;border-radius:var(--r-card);background:var(--soft)}
+.share-text{display:flex;flex-direction:column;justify-content:space-between;gap:24px;min-width:0}
+.lead{font-size:18px;line-height:1.2;color:var(--muted);max-width:430px}
+.qr-plate{width:289px;padding:24px;border-radius:15px;background:#f7f7f7;align-self:start}
+.qr{width:100%;aspect-ratio:1;display:grid;place-items:center;position:relative;color:#0a0a0a}
 .qr svg{width:100%;height:100%}
-.qr-fallback{font-size:14px;color:rgba(10,10,10,.6);text-align:center;padding:16px}
-.actions{display:flex;flex-direction:column;justify-content:space-between;gap:10px;min-width:0;align-self:stretch}
-.rules{display:flex;align-items:center;gap:10px;min-height:48px;padding:10px;border-radius:var(--r-btn);background:#f7f7f7;color:#0a0a0a;font-size:12px;font-weight:500;line-height:1.2;text-align:left;transition:background .15s}
+.qr-fallback{font-size:14px;color:rgba(10,10,10,.6);text-align:center;padding:8px}
+.btns{display:flex;flex-direction:column;gap:6px}
+.btn--ghost{background:rgba(178,178,178,.27);color:var(--teal)}
+.btn--ghost:hover{background:rgba(178,178,178,.4)}
+.btn--ghost:active{background:rgba(178,178,178,.5)}
+.ref-photo{position:relative;min-height:300px;border-radius:var(--r-card);overflow:hidden;background:#c3c3c3}
+.ref-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:30% 50%;transform:scaleX(-1)}
+.rules{position:absolute;left:16px;bottom:16px;max-width:calc(100% - 32px);display:flex;align-items:center;gap:10px;min-height:48px;padding:10px 16px 10px 10px;border-radius:12px;background:#f7f7f7;color:#0a0a0a;font-size:14px;font-weight:400;line-height:1.2;text-align:left;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);transition:background .15s}
 .rules:hover{background:#ffffff}
 .rules .ico{width:28px;height:28px;border-radius:8px;background:var(--teal);display:grid;place-items:center;flex:none}
 .rules .ico svg{width:20px;height:20px;fill:#f7f7f7}
-.btns{display:flex;flex-direction:column;gap:6px}
-@container (max-width:980px){
-  .ref-panel{width:100%}
-}
-@container (max-width:640px){
-  .ref{min-height:0;padding-top:min(56vw,240px)}
-  .ref-photo img{left:0;top:0;width:100%;height:100%;object-position:36% 35%}
-  .ref-panel{padding:20px;gap:16px;border-radius:var(--r-card) var(--r-card) 0 0;background:rgba(11,11,12,.72)}
-  .lead{font-size:16px}
-  .share-card{grid-template-columns:1fr;gap:16px}
-  .qr-plate{width:min(240px,100%);margin:0 auto}
-  .actions{gap:12px}
-}
-@container (min-width:641px) and (max-width:760px){
-  .share-card{grid-template-columns:220px minmax(0,1fr);gap:20px}
-  .qr-plate{width:220px}
-}
 
 /* ---------- stats ---------- */
 .block{display:flex;flex-direction:column;gap:24px}
-.stats{display:grid;grid-template-columns:672fr 376fr 376fr;grid-template-rows:140px 140px;gap:10px}
+.stats{display:grid;grid-template-columns:672fr 376fr 376fr;grid-template-rows:184px 184px;gap:10px}
 .card{background:var(--black);color:var(--white);border-radius:var(--r-card);padding:16px;display:flex;flex-direction:column;justify-content:space-between;min-width:0}
 .card--big{grid-row:span 2}
 .card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
@@ -131,11 +115,11 @@ a{text-decoration:none}
 .card-value{font-size:48px;font-weight:500;line-height:.8;text-align:right}
 .card--big .card-value{font-size:90px}
 .card-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
-.progress{display:flex;flex-direction:column;gap:10px;width:min(340px,100%)}
+.progress{display:flex;flex-direction:column;gap:13px;width:min(300px,100%)}
 .progress span{white-space:nowrap}
 .progress span{font-size:20px;font-weight:400;color:rgba(247,247,247,.5)}
-.bar{height:6px;border-radius:100px;background:rgba(255,255,255,.22);overflow:hidden}
-.bar i{display:block;height:100%;width:0;border-radius:inherit;background:var(--teal);transition:width 1s cubic-bezier(.2,.8,.2,1)}
+.bar{height:24px;padding:2px;border-radius:100px;background:rgba(255,255,255,.19);overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:inherit;background:#69d5dc;transition:width 1s cubic-bezier(.2,.8,.2,1)}
 .tip-wrap{position:relative}
 .tip-btn{width:28px;height:28px;margin:-2px;border-radius:50%;display:grid;place-items:center}
 .tip-btn svg{width:24px;height:24px}
@@ -149,7 +133,7 @@ a{text-decoration:none}
 .tip li em{font-style:normal;font-weight:500;color:var(--teal-press)}
 
 /* ---------- rating + history ---------- */
-.duo{display:grid;grid-template-columns:782fr 563fr;gap:99px;align-items:start}
+.duo{display:grid;grid-template-columns:772fr 563fr;gap:99px;align-items:start}
 .rating{position:relative;border-radius:var(--r-card);overflow:hidden;min-height:465px;background:#c3c3c3}
 .rating>img{position:absolute;width:144%;height:153%;left:-32%;top:-45%;object-fit:cover;max-width:none}
 .rating-inner{position:relative;display:flex;flex-direction:column;gap:12px;padding:16px;width:min(390px,100%)}
@@ -211,11 +195,14 @@ html[data-theme="dark"]{--bg:#0b0b0c;--soft:rgba(255,255,255,.04);--line:rgba(25
 html[data-theme="dark"] body{color:var(--white)}
 html[data-theme="dark"] .sidebar,html[data-theme="dark"] .topbar{box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
 html[data-theme="dark"] .events{box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
-html[data-theme="dark"] .rules .ico svg{fill:#0a0a0a}
 html[data-theme="dark"] .btn{color:#0a0a0a}
-html[data-theme="dark"] .btn.is-done{background:#f7f7f7}
-html[data-theme="dark"] .ref,html[data-theme="dark"] .rating{background:#1a1a1a}
-html[data-theme="dark"] .ref-panel{box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+html[data-theme="dark"] .btn.is-done{background:#f7f7f7;color:#0a0a0a}
+html[data-theme="dark"] .btn--ghost{background:rgba(255,255,255,.1);color:#7cc9cd}
+html[data-theme="dark"] .btn--ghost:hover{background:rgba(255,255,255,.15)}
+html[data-theme="dark"] .share-card{box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);background:#151617}
+html[data-theme="dark"] .qr-plate{background:#0b0b0c}
+html[data-theme="dark"] .qr{color:#f7f7f7}
+html[data-theme="dark"] .ref-photo,html[data-theme="dark"] .rating{background:#1a1a1a}
 html[data-theme="dark"] .card{background:#151617;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
 html[data-theme="dark"] .tip,html[data-theme="dark"] .menu{background:#1f2022;color:var(--white);box-shadow:0 12px 32px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.08)}
 html[data-theme="dark"] .tip li em{color:#7cc9cd}
@@ -234,15 +221,22 @@ html.theming,html.theming *{transition:background-color .25s,color .25s,border-c
 /* ---------- responsive ---------- */
 @media (max-width:1600px){
   :root{--side:300px}
-  .duo{gap:40px;grid-template-columns:1.15fr 1fr}
+  .duo,.ref{gap:40px;grid-template-columns:1.15fr 1fr}
+  .share-card{grid-template-columns:minmax(0,1fr) 220px}
+  .qr-plate{width:220px;padding:16px}
+  .lead{font-size:16px}
   .event{grid-template-columns:76px minmax(0,1fr) 90px;gap:14px}
   .event .what{padding-left:14px}
 }
 @media (max-width:1360px){
   .stats{grid-template-columns:1fr 1fr;grid-template-rows:auto}
   .card--big{grid-column:1 / -1;grid-row:auto;min-height:240px}
-  .card:not(.card--big){min-height:140px}
-  .duo{grid-template-columns:1fr}
+  .card:not(.card--big){min-height:160px}
+  .duo,.ref{grid-template-columns:1fr}
+  .share-card{grid-template-columns:minmax(0,1fr) 260px}
+  .qr-plate{width:260px;padding:20px}
+  .ref-photo{min-height:340px}
+  .lead{max-width:none}
 }
 @media (max-width:1024px){
   .app{grid-template-columns:1fr;padding:12px 12px 0;gap:0}
@@ -260,6 +254,11 @@ html.theming,html.theming *{transition:background-color .25s,color .25s,border-c
   .profile{gap:8px}
   .theme-switch button{width:30px;height:30px}
   .h2{font-size:22px}
+  .lead{font-size:16px}
+  .share-card{grid-template-columns:1fr}
+  .qr-plate{width:min(240px,100%);padding:16px;margin:0 auto}
+  .ref-photo{min-height:240px}
+  .rules{left:12px;bottom:12px;max-width:calc(100% - 24px)}
   .card--big{min-height:220px}
   .card--big .card-value{font-size:72px}
   .progress span{font-size:16px}
@@ -321,17 +320,13 @@ html.theming,html.theming *{transition:background-color .25s,color .25s,border-c
 
     <main class="content">
       <!-- 1. Реферальная ссылка -->
-      <section class="ref-wrap" aria-labelledby="t-ref"><div class="ref">
-        <div class="ref-photo"><img src="assets/hero.webp" srcset="assets/hero-sm.webp 900w, assets/hero.webp 1800w" sizes="(max-width:1024px) 100vw, 75vw" alt="Внедорожник на берегу моря, рядом человек раскинул руки" fetchpriority="high"></div>
-        <div class="ref-panel">
+      <section class="ref" aria-labelledby="t-ref">
+        <div class="ref-main">
           <h2 class="h2" id="t-ref">Ваша реферальная ссылка</h2>
-          <p class="lead">Делитесь своей персональной ссылкой с друзьями и участвуйте в розыгрыше призов. Чем больше знакомых запишется на тест-драйв по Вашей ссылке, тем больше шансов на победу!</p>
           <div class="share-card">
-            <div class="qr-plate"><div class="qr" id="qr" role="img" aria-label="QR-код с вашей реферальной ссылкой"></div></div>
-            <div class="actions">
-              <button class="rules" id="rulesBtn"><span class="ico"><svg viewBox="0 0 24 24"><use href="#i-download"/></svg></span>Скачать правила Реферальной программы</button>
+            <div class="share-text">
+              <p class="lead">Делитесь своей персональной ссылкой с друзьями и участвуйте в розыгрыше призов. Чем больше знакомых запишется на тест-драйв по Вашей ссылке, тем больше шансов на победу!</p>
               <div class="btns">
-                <button class="btn" id="copyBtn"><svg viewBox="0 0 24 24"><use href="#i-copy"/></svg><span>Копировать ссылку</span></button>
                 <div class="share-menu">
                   <button class="btn" id="shareBtn" aria-haspopup="true" aria-expanded="false" style="width:100%"><svg viewBox="0 0 24 24"><use href="#i-share"/></svg><span>Поделиться</span></button>
                   <div class="menu" id="shareMenu" role="menu">
@@ -340,11 +335,17 @@ html.theming,html.theming *{transition:background-color .25s,color .25s,border-c
                     <a role="menuitem" id="sWa" target="_blank" rel="noopener"><i class="dot" style="background:#25D366"></i>WhatsApp</a>
                   </div>
                 </div>
+                <button class="btn btn--ghost" id="copyBtn"><svg viewBox="0 0 24 24"><use href="#i-copy"/></svg><span>Копировать ссылку</span></button>
               </div>
             </div>
+            <div class="qr-plate"><div class="qr" id="qr" role="img" aria-label="QR-код с вашей реферальной ссылкой"></div></div>
           </div>
         </div>
-      </div></section>
+        <div class="ref-photo">
+          <img src="assets/hero.webp" srcset="assets/hero-sm.webp 900w, assets/hero.webp 1800w" sizes="(max-width:1360px) 100vw, 35vw" alt="Внедорожник на берегу моря, рядом человек раскинул руки" fetchpriority="high">
+          <button class="rules" id="rulesBtn"><span class="ico"><svg viewBox="0 0 24 24"><use href="#i-download"/></svg></span>Скачать правила Реферальной программы</button>
+        </div>
+      </section>
 
       <!-- 2. Статистика -->
       <section class="block" aria-labelledby="t-stats">
@@ -464,7 +465,7 @@ html.theming,html.theming *{transition:background-color .25s,color .25s,border-c
     var qr = window.qrcode(0, 'M'); qr.addData(refLink); qr.make();
     var n = qr.getModuleCount(), d = '';
     for (var r=0;r<n;r++) for (var c=0;c<n;c++) if (qr.isDark(r,c)) d += 'M'+c+' '+r+'h1v1h-1z';
-    box.innerHTML = '<svg viewBox="-1 -1 '+(n+2)+' '+(n+2)+'" shape-rendering="crispEdges" aria-hidden="true"><path d="'+d+'" fill="#0A0A0A"/></svg>';
+    box.innerHTML = '<svg viewBox="-1 -1 '+(n+2)+' '+(n+2)+'" shape-rendering="crispEdges" aria-hidden="true"><path d="'+d+'" fill="currentColor"/></svg>';
   }
   window.addEventListener('load', drawQR);
 
