@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Реферальная программа · личный кабинет (концепт)</title>
+<meta name="description" content="Дизайн-концепт страницы реферальной программы в личном кабинете. Тестовое задание, данные вымышлены. Дизайн и вёрстка: Максим Кощеев.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500&family=Russo+One&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f7f7; --white:#f7f7f7; --pure:#ffffff; --black:#0a0a0a; --graphite:#1e1e21;
+  --teal:#5cacb1; --teal-hover:#4e9ca1; --teal-press:#458d92;
+  --soft:rgba(10,10,10,.05); --line:rgba(10,10,10,.12); --muted:rgba(10,10,10,.6);
+  --r-card:16px; --r-panel:20px; --r-btn:14px; --r-row:8px;
+  --font:'Onest',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --display:'Russo One','Onest',system-ui,sans-serif;
+  --side:360px; --gap:20px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--black);font:400 16px/1.2 var(--font);min-height:100vh}
+img,svg{display:block}
+button,a,select{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none}
+a{text-decoration:none}
+:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- layout ---------- */
+.app{display:grid;grid-template-columns:var(--side) minmax(0,1fr);gap:28px;padding:20px 20px 0;max-width:1920px;margin:0 auto}
+.sidebar{position:sticky;top:20px;height:min(1040px,calc(100vh - 40px));background:var(--graphite);color:var(--white);border-radius:var(--r-card);padding:16px;display:flex;flex-direction:column;justify-content:space-between;z-index:30}
+.main{min-width:0;display:flex;flex-direction:column}
+.content{display:flex;flex-direction:column;gap:70px;padding:64px 24px 100px}
+
+/* ---------- sidebar ---------- */
+.brand{display:flex;flex-direction:column;gap:10px}
+.brand svg{width:191px;height:31px}
+.brand small{font-size:14px;color:var(--white)}
+.nav{display:flex;flex-direction:column;gap:6px;margin-top:48px}
+.nav a{display:flex;align-items:center;min-height:43px;padding:12px;border-radius:var(--r-row);font-size:16px;color:rgba(247,247,247,.6);transition:background .15s,color .15s}
+.nav a:hover{color:var(--white);background:rgba(255,255,255,.08)}
+.nav a[aria-current="page"]{background:rgba(255,255,255,.17);color:var(--white);font-weight:500}
+.support{display:flex;align-items:center;gap:10px;min-height:44px;padding:10px 0;color:var(--white);font-size:16px;opacity:.9}
+.support:hover{opacity:1}
+.support svg{width:24px;height:24px}
+.sidebar .side-close{display:none}
+
+/* ---------- header ---------- */
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:78px;background:var(--graphite);color:var(--white);border-radius:var(--r-card);padding:19px 24px}
+.topbar h1{font-weight:400;font-size:20px;color:rgba(247,247,247,.6)}
+.top-left{display:flex;align-items:center;gap:12px;min-width:0}
+.burger{display:none;width:40px;height:40px;border-radius:10px;align-items:center;justify-content:center}
+.burger:hover{background:rgba(255,255,255,.1)}
+.profile{display:flex;align-items:center;gap:24px}
+.user{display:flex;align-items:center;gap:10px;font-size:16px;white-space:nowrap}
+.avatar{width:28px;height:28px;border-radius:50%;background:var(--teal);color:var(--black);display:grid;place-items:center;font-size:12px;font-weight:500}
+.vsep{width:1px;height:19px;background:rgba(247,247,247,.3)}
+.icon-btn{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;transition:background .15s}
+.icon-btn:hover{background:rgba(255,255,255,.12)}
+.icon-btn svg{width:24px;height:24px}
+.concept-tag{font-size:12px;font-weight:500;padding:3px 8px;border-radius:22px;background:rgba(92,172,177,.2);color:#9fd6d9;white-space:nowrap}
+
+/* ---------- common ---------- */
+.h2{font-family:var(--display);font-weight:400;font-size:28px;line-height:1.2;letter-spacing:.2px}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 20px;border-radius:var(--r-btn);background:var(--teal);color:var(--white);font-size:16px;font-weight:500;transition:background .15s,transform .1s}
+.btn:hover{background:var(--teal-hover)}
+.btn:active{background:var(--teal-press);transform:translateY(1px)}
+.btn svg{width:24px;height:24px;flex:none}
+.btn.is-done{background:var(--black)}
+.badge{display:inline-flex;align-items:center;padding:2px 6px;border-radius:22px;font-size:12px;font-weight:500;line-height:1.4;white-space:nowrap}
+.badge--light{background:var(--white);color:var(--black)}
+.badge--dark{background:var(--black);color:var(--white)}
+
+/* ---------- referral block ---------- */
+.ref{display:grid;grid-template-columns:672fr 662fr;gap:72px;align-items:stretch}
+.ref-left{display:flex;flex-direction:column;gap:24px}
+.lead{font-size:18px;line-height:1.2;color:var(--muted);max-width:672px}
+.share-card{display:grid;grid-template-columns:279px minmax(0,1fr);gap:24px;padding:16px;border-radius:var(--r-panel);background:var(--soft)}
+.qr{width:279px;aspect-ratio:1;border-radius:12px;display:grid;place-items:center;background:transparent;position:relative}
+.qr svg{width:100%;height:100%}
+.qr-fallback{font-size:14px;color:var(--muted);text-align:center;padding:16px}
+.actions{display:flex;flex-direction:column;justify-content:space-between;gap:10px;min-width:0}
+.rules{display:flex;align-items:center;gap:10px;min-height:48px;padding:10px;border-radius:var(--r-btn);background:var(--white);font-size:14px;font-weight:500;text-align:left;transition:background .15s}
+.rules:hover{background:var(--pure)}
+.rules .ico{width:28px;height:28px;border-radius:8px;background:var(--teal);display:grid;place-items:center;flex:none}
+.rules .ico svg{width:20px;height:20px}
+.linkline{display:flex;flex-direction:column;gap:6px}
+.linkline span{font-size:14px;color:var(--muted)}
+.linkfield{font-size:14px;font-weight:500;padding:12px 14px;border-radius:12px;background:var(--pure);border:1px solid var(--line);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;user-select:all}
+.btns{display:flex;flex-direction:column;gap:6px}
+.photo{position:relative;border-radius:var(--r-card);overflow:hidden;background:#c3c3c3;min-height:300px}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:42% 50%}
+.photo::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.18)}
+
+/* ---------- stats ---------- */
+.block{display:flex;flex-direction:column;gap:24px}
+.stats{display:grid;grid-template-columns:672fr 376fr 376fr;grid-template-rows:140px 140px;gap:10px}
+.card{background:var(--black);color:var(--white);border-radius:var(--r-card);padding:16px;display:flex;flex-direction:column;justify-content:space-between;min-width:0}
+.card--big{grid-row:span 2}
+.card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.card-title{font-size:14px;line-height:1.2;max-width:12ch}
+.card--big .card-title{font-size:24px;max-width:10ch}
+.card-value{font-size:48px;font-weight:500;line-height:.8;text-align:right}
+.card--big .card-value{font-size:90px}
+.card-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
+.progress{display:flex;flex-direction:column;gap:10px;width:min(340px,100%)}
+.progress span{white-space:nowrap}
+.progress span{font-size:20px;font-weight:300;color:rgba(247,247,247,.6)}
+.bar{height:6px;border-radius:100px;background:rgba(255,255,255,.22);overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:inherit;background:var(--teal);transition:width 1s cubic-bezier(.2,.8,.2,1)}
+.tip-wrap{position:relative}
+.tip-btn{width:28px;height:28px;margin:-2px;border-radius:50%;display:grid;place-items:center}
+.tip-btn svg{width:24px;height:24px}
+.tip-btn svg{fill:var(--teal)}
+.tip-btn:hover{background:rgba(255,255,255,.08)}
+.tip{position:absolute;right:0;top:36px;width:300px;padding:16px;border-radius:14px;background:var(--pure);color:var(--black);box-shadow:0 12px 32px rgba(0,0,0,.25);font-size:14px;line-height:1.35;z-index:20;opacity:0;visibility:hidden;transform:translateY(-4px);transition:.15s}
+.tip.open{opacity:1;visibility:visible;transform:none}
+.tip b{display:block;font-weight:500;font-size:16px;margin-bottom:8px}
+.tip ul{list-style:none;display:grid;gap:6px}
+.tip li{display:flex;justify-content:space-between;gap:12px}
+.tip li em{font-style:normal;font-weight:500;color:var(--teal-press)}
+
+/* ---------- rating + history ---------- */
+.duo{display:grid;grid-template-columns:782fr 563fr;gap:99px;align-items:start}
+.rating{position:relative;border-radius:var(--r-card);overflow:hidden;min-height:465px;background:#c3c3c3}
+.rating>img{position:absolute;width:144%;height:153%;left:-32%;top:-45%;object-fit:cover;max-width:none}
+.rating-inner{position:relative;display:flex;flex-direction:column;gap:12px;padding:16px;width:min(390px,100%)}
+.filters{display:flex;gap:8px}
+.select{position:relative}
+.select select{appearance:none;-webkit-appearance:none;border:0;border-radius:8px;background:var(--white);padding:7px 38px 7px 14px;font-size:14px;cursor:pointer;min-height:32px}
+.select svg{position:absolute;right:8px;top:50%;width:20px;height:20px;transform:translateY(-50%);pointer-events:none}
+.select svg{fill:var(--black)}
+.table{display:flex;flex-direction:column;gap:6px;margin-top:16px}
+.row{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;align-items:center;min-height:43px;padding:0 20px;border-radius:var(--r-row);background:rgba(255,255,255,.29);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);color:var(--white);font-size:14px;font-weight:500}
+.row>*{position:relative}
+.row>:nth-child(2){padding-left:16px;border-left:1px solid rgba(247,247,247,.3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row>:last-child{text-align:right;border-left:1px solid rgba(247,247,247,.3)}
+.row--head{min-height:38px;font-size:12px;font-weight:400}
+.row--head>*{border:0!important}
+.row--me{background:var(--white);color:var(--black);font-weight:500}
+.row--me>:nth-child(2),.row--me>:last-child{border-color:var(--line)}
+.row--top>:first-child::after{content:"";position:absolute;left:14px;top:50%;width:6px;height:6px;border-radius:50%;background:var(--teal);transform:translateY(-50%)}
+.gap{color:var(--white);text-align:center;font-size:16px;line-height:1;letter-spacing:2px;opacity:.9}
+.history-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
+.count{font-size:16px;color:rgba(10,10,10,.5);white-space:nowrap}
+.events{list-style:none;display:flex;flex-direction:column;gap:6px;padding:16px;border-radius:var(--r-panel);background:var(--soft)}
+.event{display:grid;grid-template-columns:84px minmax(0,1fr) 98px;align-items:center;gap:24px;min-height:56px;padding:10px 0;border-radius:10px}
+.event .what{display:flex;flex-direction:column;gap:2px;padding-left:24px;border-left:1px solid rgba(10,10,10,.24);min-width:0}
+.event .what b{font-weight:500;font-size:16px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.event .what span{font-size:12px;font-weight:500;color:var(--muted)}
+.event time{font-size:14px;text-align:right;padding-left:12px;border-left:1px solid rgba(10,10,10,.24);white-space:nowrap}
+.event.is-new{animation:fade .35s ease both}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.history .btn{min-height:43px}
+.history{display:flex;flex-direction:column;gap:24px}
+.history .h-list{display:flex;flex-direction:column;gap:24px}
+
+/* ---------- footer ---------- */
+.footer{background:var(--black);color:var(--white);margin-top:20px}
+.footer-in{max-width:1920px;margin:0 auto;padding:40px 60px;display:flex;flex-direction:column;gap:28px}
+.models{display:flex;flex-wrap:wrap;gap:12px 40px;font-weight:500;font-size:18px}
+.models span:first-child{opacity:1}
+.models .on{color:var(--teal)}
+.disclaimer{font-size:13px;line-height:1.5;color:rgba(247,247,247,.55);max-width:980px}
+.disclaimer a{color:var(--white);text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- toast / share menu ---------- */
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:var(--black);color:var(--white);padding:14px 20px;border-radius:14px;font-size:15px;display:flex;align-items:center;gap:10px;box-shadow:0 10px 30px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:.2s;z-index:100;max-width:calc(100vw - 32px)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.toast i{width:8px;height:8px;border-radius:50%;background:var(--teal);flex:none}
+.share-menu{position:relative}
+.menu{position:absolute;left:0;right:0;bottom:calc(100% + 8px);background:var(--pure);border-radius:14px;box-shadow:0 12px 32px rgba(0,0,0,.18);padding:6px;display:none;z-index:15}
+.menu.open{display:block}
+.menu a,.menu button{display:flex;align-items:center;gap:10px;width:100%;padding:12px;border-radius:10px;font-size:15px;text-align:left}
+.menu a:hover,.menu button:hover{background:var(--soft)}
+.menu .dot{width:10px;height:10px;border-radius:50%;flex:none}
+.scrim{position:fixed;inset:0;background:rgba(10,10,10,.5);opacity:0;visibility:hidden;transition:.2s;z-index:25}
+.scrim.show{opacity:1;visibility:visible}
+
+/* ---------- responsive ---------- */
+@media (max-width:1600px){
+  :root{--side:300px}
+  .ref{gap:40px;grid-template-columns:3fr 2fr}
+  .share-card{grid-template-columns:220px minmax(0,1fr)}
+  .qr{width:220px}
+  .duo{gap:40px;grid-template-columns:1.15fr 1fr}
+  .event{grid-template-columns:76px minmax(0,1fr) 90px;gap:14px}
+  .event .what{padding-left:14px}
+}
+@media (max-width:1360px){
+  .ref{grid-template-columns:1fr}
+  .photo{min-height:340px}
+  .stats{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .card--big{grid-column:1 / -1;grid-row:auto;min-height:240px}
+  .card:not(.card--big){min-height:140px}
+  .duo{grid-template-columns:1fr}
+}
+@media (max-width:1024px){
+  .app{grid-template-columns:1fr;padding:12px 12px 0;gap:0}
+  .sidebar{position:fixed;top:12px;left:12px;bottom:12px;height:auto;width:min(320px,calc(100vw - 24px));transform:translateX(calc(-100% - 24px));transition:transform .25s ease}
+  .sidebar.open{transform:none}
+  .sidebar .side-close{display:grid;position:absolute;top:12px;right:12px}
+  .burger{display:flex}
+  .content{padding:40px 8px 80px;gap:56px}
+}
+@media (max-width:640px){
+  .topbar{padding:12px 12px;min-height:64px}
+  .topbar h1{font-size:16px}
+  .user .name,.vsep,.concept-tag{display:none}
+  .profile{gap:8px}
+  .h2{font-size:22px}
+  .lead{font-size:16px}
+  .share-card{grid-template-columns:1fr;gap:16px}
+  .qr{width:min(240px,100%);margin:0 auto;padding:0}
+  .actions{gap:12px}
+  .photo{min-height:220px}
+  .card--big{min-height:220px}
+  .card--big .card-title{font-size:20px}
+  .card--big .card-value{font-size:72px}
+  .progress span{font-size:16px}
+  .card-value{font-size:40px}
+  .card-head{flex-direction:column-reverse;gap:8px}
+  .card--big .card-head{flex-direction:row}
+  .rating{min-height:0}
+  .rating>img{width:100%;height:100%;left:0;top:0}
+  .rating-inner{width:100%;background:linear-gradient(90deg,rgba(0,0,0,.35),rgba(0,0,0,.15))}
+  .row{padding:0 14px;grid-template-columns:36px minmax(0,1fr) 40px}
+  .event{grid-template-columns:76px minmax(0,1fr);gap:10px 12px}
+  .event .badge{justify-self:start}
+  .progress span{white-space:normal}
+  .event time{grid-column:2;text-align:left;border:0;padding:0 0 0 14px;font-size:12px;color:var(--muted);margin-top:-6px}
+  .event .what{padding-left:14px}
+  .tip{right:-8px;width:min(300px,calc(100vw - 64px))}
+  .footer-in{padding:32px 20px}
+  .models{gap:10px 24px;font-size:16px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar" aria-label="Меню личного кабинета">
+    <div>
+      <div class="brand">
+        <svg viewBox="0 0 191 31" role="img" aria-label="JETOUR"><use href="#logo"/></svg>
+        <small>личный кабинет</small>
+      </div>
+      <button class="icon-btn side-close" id="sideClose" aria-label="Закрыть меню"><svg viewBox="0 0 24 24"><path d="M6.4 5 12 10.6 17.6 5 19 6.4 13.4 12 19 17.6 17.6 19 12 13.4 6.4 19 5 17.6 10.6 12 5 6.4z" fill="#F7F7F7"/></svg></button>
+      <nav class="nav">
+        <a href="#" data-soon>Главная</a>
+        <a href="#" data-soon>Бонусная программа</a>
+        <a href="#" aria-current="page">Реферальная программа</a>
+        <a href="#" data-soon>Клуб привилегий ДЖЕТУРИСТ</a>
+      </nav>
+    </div>
+    <a class="support" href="#" data-soon><svg viewBox="0 0 24 24"><use href="#i-support"/></svg>Техподдержка</a>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="top-left">
+        <button class="burger" id="burger" aria-label="Открыть меню" aria-controls="sidebar" aria-expanded="false"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M3 5h18v2H3zm0 6h18v2H3zm0 6h18v2H3z" fill="#F7F7F7"/></svg></button>
+        <h1>Реферальная программа</h1>
+        <span class="concept-tag">Концепт</span>
+      </div>
+      <div class="profile">
+        <div class="user"><span class="avatar" aria-hidden="true">ИИ</span><span class="name">Иванов Иван</span></div>
+        <span class="vsep" aria-hidden="true"></span>
+        <button class="icon-btn" data-soon="Выход в концепте не работает" aria-label="Выйти"><svg viewBox="0 0 24 24"><use href="#i-logout"/></svg></button>
+      </div>
+    </header>
+
+    <main class="content">
+      <!-- 1. Реферальная ссылка -->
+      <section class="ref" aria-labelledby="t-ref">
+        <div class="ref-left">
+          <h2 class="h2" id="t-ref">Ваша реферальная ссылка</h2>
+          <p class="lead">Делитесь своей персональной ссылкой с друзьями и участвуйте в розыгрыше призов. Чем больше знакомых запишется на тест-драйв по Вашей ссылке, тем больше шансов на победу!</p>
+          <div class="share-card">
+            <div class="qr" id="qr" role="img" aria-label="QR-код с вашей реферальной ссылкой"></div>
+            <div class="actions">
+              <button class="rules" id="rulesBtn"><span class="ico"><svg viewBox="0 0 24 24"><use href="#i-download"/></svg></span>Скачать правила Реферальной программы</button>
+              <div class="linkline">
+                <span>Ваша ссылка</span>
+                <div class="linkfield" id="linkText"></div>
+              </div>
+              <div class="btns">
+                <button class="btn" id="copyBtn"><svg viewBox="0 0 24 24"><use href="#i-copy"/></svg><span>Копировать ссылку</span></button>
+                <div class="share-menu">
+                  <button class="btn" id="shareBtn" aria-haspopup="true" aria-expanded="false" style="width:100%"><svg viewBox="0 0 24 24"><use href="#i-share"/></svg><span>Поделиться</span></button>
+                  <div class="menu" id="shareMenu" role="menu">
+                    <a role="menuitem" id="sTg" target="_blank" rel="noopener"><i class="dot" style="background:#2AABEE"></i>Telegram</a>
+                    <a role="menuitem" id="sVk" target="_blank" rel="noopener"><i class="dot" style="background:#0077FF"></i>ВКонтакте</a>
+                    <a role="menuitem" id="sWa" target="_blank" rel="noopener"><i class="dot" style="background:#25D366"></i>WhatsApp</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="photo"><img src="assets/hero.webp" srcset="assets/hero-sm.webp 900w, assets/hero.webp 1800w" sizes="(max-width:1360px) 100vw, 40vw" alt="Внедорожник на берегу моря, рядом человек раскинул руки" fetchpriority="high"></div>
+      </section>
+
+      <!-- 2. Статистика -->
+      <section class="block" aria-labelledby="t-stats">
+        <h2 class="h2" id="t-stats">Ваша статистика</h2>
+        <div class="stats">
+          <article class="card card--big">
+            <div class="card-head">
+              <h3 class="card-title" style="font-weight:400">Количество баллов</h3>
+              <div class="tip-wrap">
+                <button class="tip-btn" id="tipBtn" aria-label="Как начисляются баллы" aria-expanded="false" aria-controls="tip"><svg viewBox="0 0 24 24"><use href="#i-info"/></svg></button>
+                <div class="tip" id="tip" role="tooltip">
+                  <b>Как начисляются баллы</b>
+                  <ul>
+                    <li>Друг записался на тест-драйв <em>+1</em></li>
+                    <li>Друг прошёл тест-драйв <em>+2</em></li>
+                    <li>Друг воспользовался спецпредложением <em>+1</em></li>
+                    <li>Друг купил JETOUR <em>+4</em></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="card-foot">
+              <div class="progress">
+                <span>До приза не хватает 5 баллов</span>
+                <div class="bar" role="progressbar" aria-label="Прогресс до приза" aria-valuemin="0" aria-valuemax="40" aria-valuenow="35"><i data-w="87.5"></i></div>
+              </div>
+              <div class="card-value" data-count="35">35</div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-head"><h3 class="card-title" style="font-weight:400">Записались на тест-драйв</h3><span class="badge badge--light">+1 балл</span></div>
+            <div class="card-value" data-count="7">7</div>
+          </article>
+          <article class="card">
+            <div class="card-head"><h3 class="card-title" style="font-weight:400">Специальное предложение</h3><span class="badge badge--light">+1 балл</span></div>
+            <div class="card-value" data-count="5">5</div>
+          </article>
+          <article class="card">
+            <div class="card-head"><h3 class="card-title" style="font-weight:400">Прошли тест-драйв</h3><span class="badge badge--light">+2 балла</span></div>
+            <div class="card-value" data-count="3">3</div>
+          </article>
+          <article class="card">
+            <div class="card-head"><h3 class="card-title" style="font-weight:400">Покупка JETOUR</h3><span class="badge badge--light">+4 балла</span></div>
+            <div class="card-value" data-count="2">2</div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 3. Рейтинг и история -->
+      <div class="duo">
+        <section class="block" aria-labelledby="t-rating">
+          <h2 class="h2" id="t-rating">Таблица рейтинга баллов</h2>
+          <div class="rating">
+            <img src="assets/rating.webp" srcset="assets/rating-sm.webp 900w, assets/rating.webp 1800w" sizes="(max-width:1360px) 100vw, 45vw" alt="" loading="lazy">
+            <div class="rating-inner">
+              <div class="filters">
+                <label class="select"><span class="sr">Месяц</span><select id="month"></select><svg viewBox="0 0 24 24"><use href="#i-chevron"/></svg></label>
+                <label class="select"><span class="sr">Год</span><select id="year"><option>2025</option><option selected>2026</option></select><svg viewBox="0 0 24 24"><use href="#i-chevron"/></svg></label>
+              </div>
+              <div class="table" role="table" aria-label="Рейтинг участников" id="table"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="history" aria-labelledby="t-history">
+          <div class="h-list">
+            <div class="history-head"><h2 class="h2" id="t-history">Ваша история</h2><span class="count" id="count">20 действий</span></div>
+            <ul class="events" id="events"></ul>
+          </div>
+          <button class="btn" id="moreBtn" aria-expanded="false">Смотреть всю историю</button>
+        </section>
+      </div>
+    </main>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-in">
+    <div class="models" aria-label="Модели"><span>Модели</span><span>T1 ГИБРИД</span><span>T1</span><span>T2</span><span class="on">DASHING</span><span>X70+</span><span>X90+</span></div>
+    <p class="disclaimer">Дизайн-концепт страницы личного кабинета, выполненный как тестовое задание. Это не официальный сайт бренда: все имена, телефоны, баллы и события вымышлены, ссылки и кнопки работают только в рамках демонстрации. Дизайн и вёрстка: Максим Кощеев, UX/UI-дизайнер · <a href="https://uxuidesign.ru/product/" target="_blank" rel="noopener">uxuidesign.ru</a> · <a href="https://t.me/maksim_koshcheev" target="_blank" rel="noopener">@maksim_koshcheev</a></p>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"><i></i><span></span></div>
+
+<!-- icons -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="logo" viewBox="0 0 191 31"><g fill="#F7F7F7" fill-rule="evenodd"><path d="M24.6968 6.89598C26.3679 6.89172 28.0393 6.89598 29.7104 6.90872C29.7659 6.92996 29.8043 6.9682 29.8255 7.02344C29.8426 12.2326 29.8426 17.4418 29.8255 22.6509C29.6917 23.6257 29.1418 24.2162 28.1756 24.4227C20.3484 24.4397 12.5211 24.4397 4.69391 24.4227C3.71693 24.2138 3.16698 23.6147 3.04405 22.6254C3.02698 21.0193 3.02698 19.4132 3.04405 17.8072C3.05824 17.7296 3.10513 17.6829 3.18473 17.6669C4.86654 17.6416 6.54622 17.6501 8.22384 17.6924C8.24514 17.7137 8.26648 17.7349 8.28778 17.7562C8.2963 18.7589 8.30485 19.7617 8.31336 20.7644C8.32615 20.7771 8.33894 20.7899 8.35173 20.8026C13.7404 20.8196 19.1291 20.8196 24.5178 20.8026C24.5306 20.7899 24.5434 20.7771 24.5562 20.7644C24.5647 16.1756 24.5732 11.5868 24.5817 6.99795C24.6175 6.95792 24.6558 6.92392 24.6968 6.89598Z"/><path d="M36.284 6.89597C44.5397 6.88325 52.793 6.896 61.0446 6.93421C61.0753 6.95723 61.0966 6.98696 61.1086 7.02344C61.1257 8.15364 61.1257 9.28386 61.1086 10.4141C61.0874 10.4523 61.0574 10.4821 61.0191 10.5033C53.9508 10.5118 46.8822 10.5203 39.8139 10.5288C39.784 10.5415 39.7627 10.5628 39.7499 10.5925C39.7328 11.6548 39.7328 12.717 39.7499 13.7792C39.7594 13.8025 39.7722 13.8238 39.7883 13.8429C46.4049 13.8514 53.0212 13.8599 59.6378 13.8684C59.6836 13.8884 59.7219 13.9182 59.7529 13.9576C59.77 15.0964 59.77 16.2351 59.7529 17.3738C59.7434 17.3971 59.7306 17.4184 59.7145 17.4375C53.0831 17.4715 46.4494 17.4884 39.8139 17.4885C39.784 17.5012 39.7627 17.5225 39.7499 17.5522C39.7328 18.6145 39.7328 19.6767 39.7499 20.7389C39.7594 20.7622 39.7722 20.7835 39.7883 20.8026C46.8566 20.8111 53.9252 20.8196 60.9935 20.8281C61.049 20.8494 61.0874 20.8876 61.1086 20.9428C61.1339 22.0922 61.1255 23.2394 61.083 24.3845C61.0638 24.4004 61.0426 24.4132 61.0191 24.4227C52.723 24.4397 44.4266 24.4397 36.1305 24.4227C35.335 24.2624 34.8106 23.7993 34.5574 23.0333C34.5118 22.8664 34.4863 22.6964 34.4806 22.5234C34.4635 17.9516 34.4635 13.3798 34.4806 8.80798C34.5955 7.71199 35.1966 7.07465 36.284 6.89597Z"/><path d="M65.9048 6.89598C74.9003 6.89172 83.8954 6.89598 92.8909 6.90872C92.9418 6.92336 92.9802 6.95311 93.006 6.99795C93.0231 8.14515 93.0231 9.29236 93.006 10.4396C92.9848 10.4608 92.9633 10.4821 92.942 10.5033C89.3172 10.5076 85.6937 10.5203 82.0709 10.5415C82.0581 15.1487 82.0366 19.7546 82.0069 24.359C81.9857 24.3802 81.9642 24.4015 81.943 24.4227C80.2463 24.4397 78.5494 24.4397 76.8527 24.4227C76.8018 24.3891 76.7721 24.3423 76.7632 24.2825C76.7588 19.7021 76.7461 15.1218 76.7248 10.5415C73.102 10.5203 69.4785 10.5076 65.8537 10.5033C65.8324 10.4821 65.8109 10.4608 65.7897 10.4396C65.7726 9.29236 65.7726 8.14515 65.7897 6.99795C65.813 6.94418 65.8514 6.9102 65.9048 6.89598Z"/><path d="M99.4649 6.89598C107.471 6.89172 115.478 6.89598 123.484 6.90872C124.474 7.04577 125.067 7.6024 125.262 8.57854C125.279 13.3033 125.279 18.0281 125.262 22.7529C125.138 23.5048 124.725 24.0274 124.021 24.3207C123.896 24.3667 123.769 24.4007 123.637 24.4227C115.537 24.4397 107.437 24.4397 99.337 24.4227C98.3944 24.2226 97.8445 23.649 97.6872 22.7019C97.67 18.0111 97.67 13.3203 97.6872 8.62953C97.8013 7.90406 98.1893 7.38145 98.851 7.06168C99.0523 6.98184 99.257 6.92662 99.4649 6.89598ZM103.02 10.516C108.665 10.5118 114.309 10.516 119.954 10.5288C119.967 10.5415 119.979 10.5543 119.992 10.567C120.009 13.9747 120.009 17.3823 119.992 20.7899C114.32 20.8239 108.645 20.8239 102.969 20.7899C102.94 17.3833 102.935 13.9757 102.956 10.567C102.982 10.5526 103.003 10.5356 103.02 10.516Z"/><path d="M130.058 6.89598C131.729 6.89172 133.4 6.89598 135.071 6.90872C135.127 6.92996 135.165 6.9682 135.186 7.02344C135.195 11.6123 135.203 16.2011 135.212 20.7899C137.892 20.8069 140.573 20.8154 143.257 20.8154C145.94 20.8154 148.622 20.8069 151.301 20.7899C151.31 16.2011 151.318 11.6123 151.327 7.02344C151.348 6.9682 151.386 6.92996 151.442 6.90872C153.132 6.88341 154.82 6.89192 156.507 6.93422C156.528 6.95545 156.549 6.97671 156.571 6.99795C156.588 12.2581 156.588 17.5182 156.571 22.7784C156.44 23.5184 156.026 24.0325 155.33 24.3207C155.205 24.3667 155.077 24.4007 154.946 24.4227C147.153 24.4397 139.36 24.4397 131.567 24.4227C130.862 24.2861 130.364 23.891 130.07 23.2373C130.008 23.081 129.965 22.9195 129.943 22.7529C129.925 17.5012 129.925 12.2496 129.943 6.99795C129.978 6.95792 130.017 6.92392 130.058 6.89598Z"/><path d="M161.366 6.89598C169.731 6.89172 178.095 6.89598 186.459 6.90872C187.308 7.0147 187.874 7.46935 188.16 8.27262C188.196 8.40674 188.222 8.5427 188.237 8.68051C188.254 10.9664 188.254 13.2523 188.237 15.5382C188.089 16.5106 187.53 17.0927 186.562 17.2845C183.902 17.293 181.241 17.3015 178.581 17.31C181.838 19.5365 185.095 21.7629 188.352 23.9893C188.434 24.045 188.506 24.1088 188.57 24.1805C188.603 24.2869 188.573 24.3676 188.48 24.4227C187.278 24.427 186.076 24.4312 184.874 24.4354C183.644 24.4395 182.416 24.4268 181.19 24.3972C176.3 21.0533 171.41 17.7094 166.52 14.3655C166.52 17.7072 166.503 21.0469 166.469 24.3845C166.45 24.4004 166.429 24.4132 166.405 24.4227C164.709 24.4397 163.012 24.4397 161.315 24.4227C161.284 24.3997 161.263 24.37 161.251 24.3335C161.234 18.555 161.234 12.7765 161.251 6.99795C161.287 6.95792 161.325 6.92392 161.366 6.89598ZM166.559 10.516C172.007 10.5118 177.456 10.516 182.904 10.5288C182.927 10.5383 182.949 10.5511 182.968 10.567C182.985 11.5868 182.985 12.6065 182.968 13.6262C182.955 13.639 182.942 13.6517 182.93 13.6645C177.464 13.6815 171.999 13.6815 166.533 13.6645C166.504 12.6338 166.499 11.6013 166.52 10.567C166.539 10.5532 166.552 10.5362 166.559 10.516Z"/></g></symbol>
+  <symbol id="i-logout" viewBox="0 0 24 24"><path d="M5 22C4.44772 22 4 21.5523 4 21V3C4 2.44772 4.44772 2 5 2H19C19.5523 2 20 2.44772 20 3V6H18V4H6V20H18V18H20V21C20 21.5523 19.5523 22 19 22H5ZM18 16V13H11V11H18V8L23 12L18 16Z" fill="#F7F7F7"/></symbol>
+  <symbol id="i-support" viewBox="0 0 24 24"><path d="M6.45455 19.4308L2 22.9308V4.43079C2 3.87851 2.44772 3.43079 3 3.43079H21C21.5523 3.43079 22 3.87851 22 4.43079V18.4308C22 18.9831 21.5523 19.4308 21 19.4308H6.45455ZM5.76282 17.4308H20V5.43079H4V18.8159L5.76282 17.4308ZM8 10.4308H16V12.4308H8V10.4308Z" fill="#F7F7F7"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><path d="M6.9998 6V3C6.9998 2.44772 7.44752 2 7.9998 2H19.9998C20.5521 2 20.9998 2.44772 20.9998 3V17C20.9998 17.5523 20.5521 18 19.9998 18H16.9998V20.9991C16.9998 21.5519 16.5499 22 15.993 22H4.00666C3.45059 22 3 21.5554 3 20.9991L3.0026 7.00087C3.0027 6.44811 3.45264 6 4.00942 6H6.9998ZM5.00242 8L5.00019 20H14.9998V8H5.00242ZM8.9998 6H16.9998V16H18.9998V4H8.9998V6Z" fill="#F7F7F7"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M10 15.17 19.19 6l1.41 1.41L10 18 3.64 11.64l1.41-1.41L10 15.17z" fill="#F7F7F7"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="M12.0001 13.1714L16.9499 8.22168L18.3641 9.63589L12.0001 15.9999L5.63623 9.63589L7.05044 8.22168L12.0001 13.1714Z"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M3 19H21V21H3V19ZM13 13.1716L19.0711 7.1005L20.4853 8.51472L12 17L3.51472 8.51472L4.92893 7.1005L11 13.1716V2H13V13.1716Z" fill="#F7F7F7"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24"><path d="M12 2.58582L18.2071 8.79292L16.7929 10.2071L13 6.41424V16H11V6.41424L7.20711 10.2071L5.79289 8.79292L12 2.58582ZM3 18V14H5V18C5 18.5523 5.44772 19 6 19H18C18.5523 19 19 18.5523 19 18V14H21V18C21 19.6569 19.6569 21 18 21H6C4.34315 21 3 19.6569 3 18Z" fill="#F7F7F7"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM11 7H13V9H11V7ZM11 11H13V17H11V11Z"/></symbol>
+</svg>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js" defer></script>
+<script>
+(function(){
+  'use strict';
+  var $ = function(s){return document.querySelector(s);};
+  var base = location.origin + location.pathname.replace(/index\.html$/,'');
+  if (!/^https?:/.test(location.protocol)) base = 'https://maksim431.github.io/jetour-referral/';
+  var refLink = base + '?ref=ivanov-2026';
+  var shareText = 'Записывайся на тест-драйв JETOUR по моей ссылке';
+
+  /* toast */
+  var toastEl = $('#toast'), toastT;
+  function toast(msg){ toastEl.querySelector('span').textContent = msg; toastEl.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(function(){toastEl.classList.remove('show');}, 2600); }
+
+  /* link + QR */
+  $('#linkText').textContent = refLink.replace(/^https?:\/\//,'');
+  $('#linkText').title = refLink;
+  function drawQR(){
+    var box = $('#qr');
+    if (typeof window.qrcode !== 'function') { box.innerHTML = '<p class="qr-fallback">QR-код не загрузился. Скопируйте ссылку кнопкой справа.</p>'; return; }
+    var qr = window.qrcode(0, 'M'); qr.addData(refLink); qr.make();
+    var n = qr.getModuleCount(), d = '';
+    for (var r=0;r<n;r++) for (var c=0;c<n;c++) if (qr.isDark(r,c)) d += 'M'+c+' '+r+'h1v1h-1z';
+    box.innerHTML = '<svg viewBox="-1 -1 '+(n+2)+' '+(n+2)+'" shape-rendering="crispEdges" aria-hidden="true"><path d="'+d+'" fill="#0A0A0A"/></svg>';
+  }
+  window.addEventListener('load', drawQR);
+
+  /* copy */
+  var copyBtn = $('#copyBtn'), copyT;
+  function copyText(t){
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(t);
+    return new Promise(function(res,rej){ var ta=document.createElement('textarea'); ta.value=t; ta.setAttribute('readonly',''); ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select(); try{document.execCommand('copy')?res():rej();}catch(e){rej(e);} ta.remove(); });
+  }
+  copyBtn.addEventListener('click', function(){
+    copyText(refLink).then(function(){
+      copyBtn.classList.add('is-done'); copyBtn.querySelector('use').setAttribute('href','#i-check'); copyBtn.querySelector('span').textContent='Ссылка скопирована';
+      toast('Ссылка скопирована. Отправьте её другу в мессенджер');
+      clearTimeout(copyT); copyT=setTimeout(function(){ copyBtn.classList.remove('is-done'); copyBtn.querySelector('use').setAttribute('href','#i-copy'); copyBtn.querySelector('span').textContent='Копировать ссылку'; }, 2500);
+    }).catch(function(){ toast('Не получилось скопировать. Выделите ссылку вручную'); });
+  });
+
+  /* share */
+  var shareBtn = $('#shareBtn'), menu = $('#shareMenu');
+  var u = encodeURIComponent(refLink), t = encodeURIComponent(shareText);
+  $('#sTg').href = 'https://t.me/share/url?url='+u+'&text='+t;
+  $('#sVk').href = 'https://vk.com/share.php?url='+u+'&title='+t;
+  $('#sWa').href = 'https://wa.me/?text='+t+'%20'+u;
+  function closeMenu(){ menu.classList.remove('open'); shareBtn.setAttribute('aria-expanded','false'); }
+  shareBtn.addEventListener('click', function(e){
+    e.stopPropagation();
+    var touch = window.matchMedia('(pointer:coarse)').matches;
+    if (touch && navigator.share) { navigator.share({title:'Тест-драйв JETOUR', text:shareText, url:refLink}).catch(function(){}); return; }
+    var open = !menu.classList.contains('open'); menu.classList.toggle('open', open); shareBtn.setAttribute('aria-expanded', String(open));
+    if (open) menu.querySelector('a').focus();
+  });
+  menu.addEventListener('click', function(){ closeMenu(); });
+
+  /* rules download */
+  $('#rulesBtn').addEventListener('click', function(){
+    var txt = ['ПРАВИЛА РЕФЕРАЛЬНОЙ ПРОГРАММЫ (демонстрационный текст)','',
+      '1. Участник получает персональную ссылку в личном кабинете.',
+      '2. Баллы начисляются за действия друзей, пришедших по ссылке:',
+      '   запись на тест-драйв: +1 балл; пройденный тест-драйв: +2 балла;',
+      '   спецпредложение: +1 балл; покупка автомобиля: +4 балла.',
+      '3. Рейтинг считается по месяцам. Призы разыгрываются среди участников рейтинга.',
+      '4. Чем больше баллов, тем выше шанс на победу.','',
+      'Это концепт для тестового задания. Текст не является офертой.'].join('\n');
+    var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([txt],{type:'text/plain;charset=utf-8'}));
+    a.download = 'Правила реферальной программы.txt'; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){URL.revokeObjectURL(a.href);}, 1000);
+    toast('Файл с правилами скачан');
+  });
+
+  /* tooltip */
+  var tipBtn = $('#tipBtn'), tip = $('#tip');
+  function setTip(o){ tip.classList.toggle('open',o); tipBtn.setAttribute('aria-expanded',String(o)); }
+  tipBtn.addEventListener('click', function(e){ e.stopPropagation(); if (window.matchMedia('(hover:hover)').matches) setTip(true); else setTip(!tip.classList.contains('open')); });
+  tipBtn.addEventListener('mouseenter', function(){ if (window.matchMedia('(hover:hover)').matches) setTip(true); });
+  tipBtn.parentNode.addEventListener('mouseleave', function(){ if (window.matchMedia('(hover:hover)').matches) setTip(false); });
+
+  document.addEventListener('click', function(e){ if (!e.target.closest('.share-menu')) closeMenu(); if (!e.target.closest('.tip-wrap')) setTip(false); });
+  document.addEventListener('keydown', function(e){ if (e.key==='Escape'){ closeMenu(); setTip(false); closeSide(); } });
+
+  /* progress + counters */
+  var animated = false;
+  function animate(){
+    if (animated) return; animated = true;
+    document.querySelectorAll('.bar i').forEach(function(i){ i.style.width = i.dataset.w + '%'; });
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    document.querySelectorAll('[data-count]').forEach(function(el){
+      var to = +el.dataset.count, s = performance.now(), dur = 900;
+      (function step(now){ var p = Math.min(1,(now-s)/dur); el.textContent = Math.round(to*(1-Math.pow(1-p,3))); if (p<1) requestAnimationFrame(step); })(s);
+    });
+  }
+  if ('IntersectionObserver' in window) { var io = new IntersectionObserver(function(es){ if (es.some(function(x){return x.isIntersecting;})) { animate(); io.disconnect(); } }); io.observe($('.stats')); } else animate();
+
+  /* rating */
+  var months = ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
+  var mSel = $('#month'), ySel = $('#year');
+  mSel.innerHTML = months.map(function(m,i){return '<option value="'+i+'"'+(i===0?' selected':'')+'>'+m+'</option>';}).join('');
+  function rnd(seed){ return function(){ seed = (seed*16807) % 2147483647; return (seed-1)/2147483646; }; }
+  function ratingFor(m,y){
+    if (+y===2026 && +m===0) return {top:[65,60,60,60,60], phones:['850','850','851','852','853'], me:{place:14, pts:35}};
+    var r = rnd((+y)*13 + (+m)*7 + 3), top=[], v = 50 + Math.floor(r()*30);
+    for (var i=0;i<5;i++){ top.push(v); v -= Math.floor(r()*6); }
+    var me = {place: 6 + Math.floor(r()*14), pts: Math.max(5, top[4] - 5 - Math.floor(r()*30))};
+    return {top:top, phones:[0,1,2,3,4].map(function(){return String(800+Math.floor(r()*199));}), me:me};
+  }
+  function renderRating(){
+    var d = ratingFor(mSel.value, ySel.value), h = '';
+    h += '<div class="row row--head" role="row"><span role="columnheader">Место</span><span role="columnheader">Участник</span><span role="columnheader">Баллы</span></div>';
+    d.top.forEach(function(p,i){ h += '<div class="row'+(i<3?' row--top':'')+'" role="row"><span role="cell">'+(i+1)+'</span><span role="cell">+7 940 '+d.phones[i]+'-**-**</span><span role="cell">'+p+'</span></div>'; });
+    if (d.me.place > 6) h += '<div class="gap" aria-label="Пропуск мест">...</div>';
+    h += '<div class="row row--me" role="row" aria-current="true"><span role="cell">'+d.me.place+'</span><span role="cell">+7 940 850-**-** (вы)</span><span role="cell">'+d.me.pts+'</span></div>';
+    $('#table').innerHTML = h;
+  }
+  mSel.addEventListener('change', renderRating); ySel.addEventListener('change', renderRating); renderRating();
+
+  /* history */
+  var events = [
+    [1,'Пройден тест-драйв','Иванов А.А','24.12.2025'],[1,'Записан на обслуживание','Петрова Е.Б','15.01.2026'],[3,'Получил автомобиль','Сидоренко В.В','30.01.2026'],
+    [2,'Запросил обратный звонок','Кузнецов И.И','10.02.2026'],[1,'Получил ответ по почте','Сидоров П.П','11.02.2026'],[1,'Получил ответ по почте','Сидоров П.П','11.02.2026'],
+    [1,'Записан на тест-драйв','Морозова А.С','14.02.2026'],[2,'Пройден тест-драйв','Морозова А.С','18.02.2026'],[1,'Воспользовался спецпредложением','Орлов Д.К','20.02.2026'],
+    [1,'Записан на тест-драйв','Волков Р.Н','25.02.2026'],[4,'Купил JETOUR DASHING','Петрова Е.Б','01.03.2026'],[1,'Записан на тест-драйв','Лебедева Н.О','04.03.2026'],
+    [2,'Пройден тест-драйв','Волков Р.Н','07.03.2026'],[1,'Воспользовался спецпредложением','Кузнецов И.И','10.03.2026'],[1,'Записан на тест-драйв','Зайцев М.А','12.03.2026'],
+    [1,'Записан на тест-драйв','Соколова Т.В','15.03.2026'],[1,'Воспользовался спецпредложением','Лебедева Н.О','18.03.2026'],[4,'Купил JETOUR T2','Орлов Д.К','21.03.2026'],
+    [1,'Воспользовался спецпредложением','Зайцев М.А','24.03.2026'],[1,'Записан на тест-драйв','Новиков С.П','27.03.2026']
+  ];
+  function word(n){ var a=n%10,b=n%100; return (a===1&&b!==11)?'балл':(a>=2&&a<=4&&(b<10||b>=20))?'балла':'баллов'; }
+  function eventsWord(n){ var a=n%10,b=n%100; return (a===1&&b!==11)?'действие':(a>=2&&a<=4&&(b<10||b>=20))?'действия':'действий'; }
+  $('#count').textContent = events.length + ' ' + eventsWord(events.length);
+  var shown = 0, list = $('#events');
+  function renderEvents(n){
+    var h=''; for (var i=shown;i<n;i++){ var e=events[i]; h += '<li class="event'+(shown?' is-new':'')+'"><span class="badge badge--dark">+'+e[0]+' '+word(e[0])+'</span><div class="what"><b>'+e[1]+'</b><span>'+e[2]+'</span></div><time>'+e[3]+'</time></li>'; }
+    list.insertAdjacentHTML('beforeend', h); shown = n;
+  }
+  renderEvents(6);
+  var more = $('#moreBtn');
+  more.addEventListener('click', function(){
+    if (shown < events.length) { renderEvents(events.length); more.textContent='Свернуть историю'; more.setAttribute('aria-expanded','true'); }
+    else { list.innerHTML=''; shown=0; renderEvents(6); more.textContent='Смотреть всю историю'; more.setAttribute('aria-expanded','false'); $('#t-history').scrollIntoView({behavior:'smooth',block:'start'}); }
+  });
+
+  /* mobile sidebar */
+  var side = $('#sidebar'), scrim = $('#scrim'), burger = $('#burger');
+  function openSide(){ side.classList.add('open'); scrim.classList.add('show'); burger.setAttribute('aria-expanded','true'); $('#sideClose').focus(); }
+  function closeSide(){ if (!side.classList.contains('open')) return; side.classList.remove('open'); scrim.classList.remove('show'); burger.setAttribute('aria-expanded','false'); burger.focus(); }
+  burger.addEventListener('click', openSide); $('#sideClose').addEventListener('click', closeSide); scrim.addEventListener('click', closeSide);
+
+  /* demo-only links */
+  document.querySelectorAll('[data-soon]').forEach(function(el){ el.addEventListener('click', function(e){ e.preventDefault(); toast(el.dataset.soon || 'В концепте свёрстана только страница реферальной программы'); }); });
+})();
+</script>
+</body>
+</html>
